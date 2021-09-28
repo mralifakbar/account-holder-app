@@ -7,6 +7,7 @@ package id.ilkomunila.opp;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -99,6 +100,8 @@ public class AccountHolderFormController implements Initializable {
     @FXML
     private Label lblDBStatus;
 
+    @FXML
+    private Label lblSaveStatus;
     private AccountHolderDataModel ahdm;
     @FXML
     void handleAddAccountButton(ActionEvent event) {
@@ -107,7 +110,24 @@ public class AccountHolderFormController implements Initializable {
 
     @FXML
     void handleAddHolderButton(ActionEvent event) {
+        LocalDate ld = dpBirthdate.getValue();
+        String birthdate = String.format("%d-%02d-%02d", ld.getYear(), ld.getMonthValue(), ld.getDayOfMonth());
+        IndividualHolder holder = new IndividualHolder(
+                Integer.parseInt(tfHolderID.getText()),
+                tfName.getText(),
+                tfAddress.getText(),
+                new Account(Integer.parseInt(tfAccNumber.getText()), Double.parseDouble(tfAccBalance.getText())),
+                cbGender.getSelectionModel().getSelectedItem(),
+                birthdate
+        );
 
+        try {
+            ahdm.addAccountHolder(holder);
+            lblSaveStatus.setText("Account berhasil dibuat");
+        } catch (SQLException ex) {
+            lblSaveStatus.setText("Account gagal dibuat");
+            Logger.getLogger(AccountHolderDataModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -128,10 +148,12 @@ public class AccountHolderFormController implements Initializable {
         cbGender.setItems(gender);
 
         try {
-            AccountHolderDataModel ahdm = new AccountHolderDataModel();
+            ahdm = new AccountHolderDataModel();
             lblDBStatus.setText(ahdm.conn == null? "Not Connected" : "Connected");
             tfHolderID.setText(""+ahdm.nextAccountHolderID());
             tfAccNumber.setText(tfHolderID.getText() + "01");
+            dpBirthdate.setValue(LocalDate.of(LocalDate.now().getYear() - 17, LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()));
+
         } catch (SQLException ex) {
             Logger.getLogger(AccountHolderDataModel.class.getName()).log(Level.SEVERE, null, ex);
         }

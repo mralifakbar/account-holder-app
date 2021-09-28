@@ -85,9 +85,14 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <Button fx:id="btnAddAccountHolder" layoutX="23.0" layoutY="434.0" mnemonicParsing="false" onAction="#handleAddHolderButton" prefHeight="38.0" prefWidth="268.0" text="Add Account Holder" />
-                                          <Button fx:id="btnReload" layoutX="24.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleReloadButton" prefHeight="38.0" prefWidth="268.0" text="Reload Data Table" />
-                                          <Button fx:id="btnClear" layoutX="24.0" layoutY="525.0" mnemonicParsing="false" onAction="#handleClearButton" prefHeight="38.0" prefWidth="268.0" text="Clear Form" />
+                                          <Button fx:id="btnAddAccountHolder" layoutX="23.0" layoutY="474.0" mnemonicParsing="false" onAction="#handleAddHolderButton" prefHeight="38.0" prefWidth="268.0" text="Add Account Holder" />
+                                          <Button fx:id="btnReload" layoutX="24.0" layoutY="519.0" mnemonicParsing="false" onAction="#handleReloadButton" prefHeight="38.0" prefWidth="268.0" text="Reload Data Table" />
+                                          <Button fx:id="btnClear" layoutX="24.0" layoutY="565.0" mnemonicParsing="false" onAction="#handleClearButton" prefHeight="38.0" prefWidth="268.0" text="Clear Form" />
+                                          <Label fx:id="lblSaveStatus" layoutX="23.0" layoutY="437.0" prefHeight="27.0" prefWidth="266.0" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="668.0" prefWidth="966.0">
