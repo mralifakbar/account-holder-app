@@ -150,11 +150,20 @@ public class AccountHolderDataModel {
      }
 
      public int nextAccountHolderID() throws SQLException{
-        String sql = "SELECT MAX (holder_id) from account_holder";
+        String sql = "SELECT MAX (holder_id) FROM account_holder";
         ResultSet rs = conn.createStatement().executeQuery(sql);
         while (rs.next()) {
             return rs.getInt(1) == 0 ? 1000001: rs.getInt(1)+ 1;
         }
         return 1000001;
      }
+
+    public int nextAccountNumber(int holderId) throws SQLException{
+        String sql = "SELECT MAX (acc_number) FROM account WHERE holder_id=" + holderId;
+        ResultSet rs = conn.createStatement().executeQuery(sql);
+        while (rs.next()) {
+            return rs.getInt(1) + 1;
+        }
+        return 0;
+    }
 }
