@@ -85,9 +85,9 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <Button fx:id="btnAddAccountHolder" layoutX="23.0" layoutY="434.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="268.0" text="Add Account Holder" />
-                                          <Button fx:id="btnReload" layoutX="24.0" layoutY="479.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="268.0" text="Reload Data Table" />
-                                          <Button fx:id="btnClear" layoutX="24.0" layoutY="525.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="268.0" text="Clear Form" />
+                                          <Button fx:id="btnAddAccountHolder" layoutX="23.0" layoutY="434.0" mnemonicParsing="false" onAction="#handleAddHolderButton" prefHeight="38.0" prefWidth="268.0" text="Add Account Holder" />
+                                          <Button fx:id="btnReload" layoutX="24.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleReloadButton" prefHeight="38.0" prefWidth="268.0" text="Reload Data Table" />
+                                          <Button fx:id="btnClear" layoutX="24.0" layoutY="525.0" mnemonicParsing="false" onAction="#handleClearButton" prefHeight="38.0" prefWidth="268.0" text="Clear Form" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="668.0" prefWidth="966.0">
@@ -143,7 +143,7 @@
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </TextField>
-                                                            <Button fx:id="btnAddAccount" layoutX="114.0" layoutY="180.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="268.0" text="Add Account" />
+                                                            <Button fx:id="btnAddAccount" layoutX="114.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleAddAccountButton" prefHeight="38.0" prefWidth="268.0" text="Add Account" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -167,5 +167,7 @@
             </TabPane>
          </children>
       </AnchorPane>
+      <Label layoutX="1115.0" layoutY="6.0" text="DB Status:" />
+      <Label fx:id="lblDBStatus" layoutX="1189.0" layoutY="6.0" />
    </children>
 </AnchorPane>
