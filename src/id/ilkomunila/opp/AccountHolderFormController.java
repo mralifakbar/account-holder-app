@@ -110,6 +110,7 @@ public class AccountHolderFormController implements Initializable {
     void handleAddAccountButton(ActionEvent event) throws SQLException{
         Account acc = new Account(Integer.parseInt(tfNewAccNumber.getText()), Double.parseDouble(tfNewAccBalance.getText()));
         ahdm.addAccount(Integer.parseInt(tfNewHolderID.getText()), acc);
+        viewDataAccount(Integer.parseInt(tfNewHolderID.getText()));
     }
 
     @FXML
