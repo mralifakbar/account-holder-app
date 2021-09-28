@@ -148,4 +148,13 @@ public class AccountHolderDataModel {
          }
          return data;
      }
+
+     public int nextAccountHolderID() throws SQLException{
+        String sql = "SELECT MAX (holder_id) from account_holder";
+        ResultSet rs = conn.createStatement().executeQuery(sql);
+        while (rs.next()) {
+            return rs.getInt(1) == 0 ? 1000001: rs.getInt(1)+ 1;
+        }
+        return 1000001;
+     }
 }
