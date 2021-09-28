@@ -40,11 +40,11 @@ public class AccountHolderDataModel {
         stmtAccount.execute();
     }
 
-    public void addAccountHolder(CorporateHolder holder) {
+    public void addAccountHolder(CorporateHolder holder) throws SQLException{
         String insertHolder = "INSERT INTO account_holder (holder_id, name, address)"
                 + " VALUES (?, ?, ?)";
-        String insertIndividual  = "INSERT INTO individual_holder (holder_id, gender, birthdate)"
-                + " VALUES (?, ?, ?)";
+        String insertCorporate  = "INSERT INTO corporate_holder (holder_id, gender, contact)"
+                + " VALUES (?, ?)";
         String insertAccount  = "INSERT INTO account (acc_number, balance, holder_id)"
                 + " VALUES (?, ?, ?)";
 
@@ -54,11 +54,10 @@ public class AccountHolderDataModel {
         stmtHolder.setString(3, holder.getAddress());
         stmtHolder.execute();
 
-        PreparedStatement stmtIndividual = conn.prepareStatement(insertIndividual);
-        stmtIndividual.setInt(1, holder.getHolderId());
-        stmtIndividual.setString(2, holder.getGender());
-        stmtIndividual.setString(3, holder.getBirthdate());
-        stmtIndividual.execute();
+        PreparedStatement stmtCorporate = conn.prepareStatement(insertCorporate);
+        stmtCorporate.setInt(1, holder.getHolderId());
+        stmtCorporate.setString(2, holder.getContact());
+        stmtCorporate.execute();
 
         PreparedStatement stmtAccount = conn.prepareStatement(insertAccount);
         stmtAccount.setInt(1, holder.getAccounts().get(0).getAccNumber());
