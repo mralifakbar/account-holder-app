@@ -161,6 +161,7 @@ public class AccountHolderFormController implements Initializable {
         colNumAccounts.setCellValueFactory(new PropertyValueFactory<>("numAccounts"));
         tblAccHolder.setItems(null);
         tblAccHolder.setItems(data);
+        btnAddAccount.setDisable(true);
     }
 
 
@@ -183,6 +184,7 @@ public class AccountHolderFormController implements Initializable {
             if (tblAccHolder.getSelectionModel().getSelectedItem() != null) {
                 IndividualHolder holder = tblAccHolder.getSelectionModel().getSelectedItem();
                 viewDataAccount(holder.getHolderId());
+                btnAddAccount.setDisable(false);
             }
         });
     }
