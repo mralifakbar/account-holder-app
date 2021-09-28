@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class AccountHolderDataModel {
-    private final Connection conn;
+    public final Connection conn;
 
     public AccountHolderDataModel() throws SQLException {
         this.conn = DBHelper.getConnection();

@@ -52,7 +52,7 @@ public class Main extends Application {
 //            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 
-//        launch(args);
+        launch(args);
     }
     
 }
