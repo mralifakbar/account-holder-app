@@ -78,13 +78,13 @@ public class AccountHolderFormController implements Initializable {
     private TableColumn<IndividualHolder, Integer> colNumAccounts;
 
     @FXML
-    private TableView<?> tblAccount;
+    private TableView<Account> tblAccount;
 
     @FXML
-    private TableColumn<?, ?> colAccNumber;
+    private TableColumn<Account, Integer> colAccNumber;
 
     @FXML
-    private TableColumn<?, ?> colBalance;
+    private TableColumn<Account, Double> colBalance;
 
     @FXML
     private TextField tfNewHolderID;
@@ -127,6 +127,8 @@ public class AccountHolderFormController implements Initializable {
         try {
             ahdm.addAccountHolder(holder);
             lblSaveStatus.setText("Account berhasil dibuat");
+            btnReload.fire();
+            btnClear.fire();
         } catch (SQLException ex) {
             lblSaveStatus.setText("Account gagal dibuat");
             Logger.getLogger(AccountHolderDataModel.class.getName()).log(Level.SEVERE, null, ex);
@@ -135,7 +137,17 @@ public class AccountHolderFormController implements Initializable {
 
     @FXML
     void handleClearButton(ActionEvent event) {
-
+        try {
+            tfHolderID.setText(""+ahdm.nextAccountHolderID());
+            tfAccNumber.setText(tfHolderID.getText() + "01");
+            tfName.setText("");
+            tfAddress.setText("");
+            cbGender.getSelectionModel().clearSelection();
+            tfAccBalance.setText("");
+            dpBirthdate.setValue(LocalDate.of(LocalDate.now().getYear() - 17, LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()));
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountHolderDataModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -161,12 +173,25 @@ public class AccountHolderFormController implements Initializable {
         try {
             ahdm = new AccountHolderDataModel();
             lblDBStatus.setText(ahdm.conn == null? "Not Connected" : "Connected");
-            tfHolderID.setText(""+ahdm.nextAccountHolderID());
-            tfAccNumber.setText(tfHolderID.getText() + "01");
-            dpBirthdate.setValue(LocalDate.of(LocalDate.now().getYear() - 17, LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()));
-
+            btnClear.fire();
+            btnReload.fire();
         } catch (SQLException ex) {
             Logger.getLogger(AccountHolderDataModel.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        tblAccHolder.getSelectionModel().selectedIndexProperty().addListener(listener->{
+            if (tblAccHolder.getSelectionModel().getSelectedItem() != null) {
+                IndividualHolder holder = tblAccHolder.getSelectionModel().getSelectedItem();
+                viewDataAccount(holder.getHolderId());
+            }
+        });
+    }
+
+    public void viewDataAccount(int holderId) {
+        ObservableList<Account> data = ahdm.getAccounts(holderId);
+        colAccNumber.setCellValueFactory(new PropertyValueFactory<>("accNumber"));
+        colBalance.setCellValueFactory(new PropertyValueFactory<>("balance"));
+        tblAccount.setItems(null);
+        tblAccount.setItems(data);
     }
 }
