@@ -10,7 +10,7 @@ public class DBHelper {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
     private static final String DB = "accholder";
-    private static final String SQCONN = "jdbc:sqlite:D:\\KULIAH\\KMMI\\PROJECT\\SQLiteDB\\AccHolder.sqlite";
+    private static final String SQCONN = "jdbc:sqlite:D:\\KULIAH\\KMMI\\PROJECT\\SQLiteDB\\AccHolder.sqlite"; //Choose DB Path
 
     public static Connection getConnection() throws SQLException {
         Connection conn = null;

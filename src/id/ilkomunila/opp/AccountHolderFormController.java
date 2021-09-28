@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  *
@@ -56,25 +57,25 @@ public class AccountHolderFormController implements Initializable {
     private Button btnClear;
 
     @FXML
-    private TableView<?> tblAccHolder;
+    private TableView<IndividualHolder> tblAccHolder;
 
     @FXML
-    private TableColumn<?, ?> colHolderID;
+    private TableColumn<IndividualHolder, Integer> colHolderID;
 
     @FXML
-    private TableColumn<?, ?> colName;
+    private TableColumn<IndividualHolder, String> colName;
 
     @FXML
-    private TableColumn<?, ?> colAddress;
+    private TableColumn<IndividualHolder, String> colAddress;
 
     @FXML
-    private TableColumn<?, ?> colGender;
+    private TableColumn<IndividualHolder, String> colGender;
 
     @FXML
-    private TableColumn<?, ?> colBirthdate;
+    private TableColumn<IndividualHolder, String> colBirthdate;
 
     @FXML
-    private TableColumn<?, ?> colNumAccounts;
+    private TableColumn<IndividualHolder, Integer> colNumAccounts;
 
     @FXML
     private TableView<?> tblAccount;
@@ -102,7 +103,9 @@ public class AccountHolderFormController implements Initializable {
 
     @FXML
     private Label lblSaveStatus;
+
     private AccountHolderDataModel ahdm;
+
     @FXML
     void handleAddAccountButton(ActionEvent event) {
 
@@ -137,7 +140,15 @@ public class AccountHolderFormController implements Initializable {
 
     @FXML
     void handleReloadButton(ActionEvent event) {
-
+        ObservableList<IndividualHolder> data = ahdm.getIndividualHolder();
+        colHolderID.setCellValueFactory(new PropertyValueFactory<>("holderId"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        colBirthdate.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
+        colNumAccounts.setCellValueFactory(new PropertyValueFactory<>("numAccounts"));
+        tblAccHolder.setItems(null);
+        tblAccHolder.setItems(data);
     }
 
 
