@@ -133,4 +133,19 @@ public class AccountHolderDataModel {
         return data;
     }
 
+     public ObservableList<Account> getAccounts(int holderID) {
+         ObservableList<Account> data = FXCollections.observableArrayList();
+         String sql = "SELECT acc_number, balance "
+                 + "FROM account "
+                 + "WHERE holder_id=" + holderID;
+         try {
+             ResultSet rs = conn.createStatement().executeQuery(sql);
+             while (rs.next()) {
+                 data.add(new Account(rs.getInt(1), rs.getDouble(2)));
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(AccountHolderDataModel.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return data;
+     }
 }
