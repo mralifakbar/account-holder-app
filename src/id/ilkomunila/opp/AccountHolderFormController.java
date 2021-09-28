@@ -185,6 +185,12 @@ public class AccountHolderFormController implements Initializable {
                 IndividualHolder holder = tblAccHolder.getSelectionModel().getSelectedItem();
                 viewDataAccount(holder.getHolderId());
                 btnAddAccount.setDisable(false);
+                tfNewHolderID.setText("" + holder.getHolderId());
+                try {
+                    tfNewAccNumber.setText("" + ahdm.nextAccountNumber(holder.getHolderId()));
+                } catch (SQLException ex) {
+                    Logger.getLogger(AccountHolderDataModel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

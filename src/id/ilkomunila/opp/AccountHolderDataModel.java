@@ -166,4 +166,15 @@ public class AccountHolderDataModel {
         }
         return 0;
     }
+
+    public void addAccount(int holderId, Account acc) throws SQLException{
+        String insertHolder = "INSERT INTO account (holder_id, acc_number, balance)"
+                + " VALUES (?, ?, ?)";
+
+        PreparedStatement stmtHolder = conn.prepareStatement(insertHolder);
+        stmtHolder.setInt(1, holderId);
+        stmtHolder.setInt(2, acc.getAccNumber());
+        stmtHolder.setDouble(3, acc.getBalance());
+        stmtHolder.execute();
+    }
 }
