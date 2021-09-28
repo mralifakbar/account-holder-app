@@ -111,6 +111,8 @@ public class AccountHolderFormController implements Initializable {
         Account acc = new Account(Integer.parseInt(tfNewAccNumber.getText()), Double.parseDouble(tfNewAccBalance.getText()));
         ahdm.addAccount(Integer.parseInt(tfNewHolderID.getText()), acc);
         viewDataAccount(Integer.parseInt(tfNewHolderID.getText()));
+        btnReload.fire();
+        tfAccBalance.setText("");
     }
 
     @FXML
