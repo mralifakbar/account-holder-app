@@ -58,7 +58,7 @@
                                                 <Font size="26.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="tfHolderID" layoutX="24.0" layoutY="82.0" prefHeight="38.0" prefWidth="268.0" promptText="Holder ID">
+                                          <TextField fx:id="tfHolderID" disable="true" layoutX="24.0" layoutY="82.0" prefHeight="38.0" prefWidth="268.0" promptText="Holder ID">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -75,7 +75,7 @@
                                           </TextField>
                                           <ComboBox fx:id="cbGender" layoutX="24.0" layoutY="216.0" prefHeight="38.0" prefWidth="268.0" promptText="Choose Gender" />
                                           <DatePicker fx:id="dpBirthdate" layoutX="23.0" layoutY="261.0" prefHeight="38.0" prefWidth="268.0" />
-                                          <TextField fx:id="tfAccNumber" layoutX="23.0" layoutY="344.0" prefHeight="38.0" prefWidth="268.0" promptText="Account Number">
+                                          <TextField fx:id="tfAccNumber" disable="true" layoutX="23.0" layoutY="344.0" prefHeight="38.0" prefWidth="268.0" promptText="Account Number">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -85,9 +85,14 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <Button fx:id="btnAddAccountHolder" layoutX="23.0" layoutY="434.0" mnemonicParsing="false" onAction="#handleAddHolderButton" prefHeight="38.0" prefWidth="268.0" text="Add Account Holder" />
-                                          <Button fx:id="btnReload" layoutX="24.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleReloadButton" prefHeight="38.0" prefWidth="268.0" text="Reload Data Table" />
-                                          <Button fx:id="btnClear" layoutX="24.0" layoutY="525.0" mnemonicParsing="false" onAction="#handleClearButton" prefHeight="38.0" prefWidth="268.0" text="Clear Form" />
+                                          <Button fx:id="btnAddAccountHolder" layoutX="23.0" layoutY="474.0" mnemonicParsing="false" onAction="#handleAddHolderButton" prefHeight="38.0" prefWidth="268.0" text="Add Account Holder" />
+                                          <Button fx:id="btnReload" layoutX="24.0" layoutY="519.0" mnemonicParsing="false" onAction="#handleReloadButton" prefHeight="38.0" prefWidth="268.0" text="Reload Data Table" />
+                                          <Button fx:id="btnClear" layoutX="24.0" layoutY="565.0" mnemonicParsing="false" onAction="#handleClearButton" prefHeight="38.0" prefWidth="268.0" text="Clear Form" />
+                                          <Label fx:id="lblSaveStatus" layoutX="23.0" layoutY="437.0" prefHeight="27.0" prefWidth="266.0" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="668.0" prefWidth="966.0">
@@ -128,12 +133,12 @@
                                                       </AnchorPane>
                                                       <AnchorPane prefHeight="267.0" prefWidth="496.0" style="-fx-background-color: #a4b0be;">
                                                          <children>
-                                                            <TextField fx:id="tfNewHolderID" layoutX="114.0" layoutY="40.0" prefHeight="38.0" prefWidth="268.0" promptText="Holder ID">
+                                                            <TextField fx:id="tfNewHolderID" disable="true" layoutX="114.0" layoutY="40.0" prefHeight="38.0" prefWidth="268.0" promptText="Holder ID">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </TextField>
-                                                            <TextField fx:id="tfNewAccNumber" layoutX="114.0" layoutY="86.0" prefHeight="38.0" prefWidth="268.0" promptText="New Account Number">
+                                                            <TextField fx:id="tfNewAccNumber" disable="true" layoutX="114.0" layoutY="86.0" prefHeight="38.0" prefWidth="268.0" promptText="New Account Number">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>

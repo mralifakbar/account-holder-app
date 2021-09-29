@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="AccountHolderApp.jar" size="13105" download="eager" />
+    <jar href="AccountHolderApp.jar" size="16706" download="eager" />
     <jar href="lib\sqlite-jdbc-3.36.0.3.jar" size="9731064" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="id.ilkomunila.opp.Main"  name="AccountHolderApp" />
