@@ -99,7 +99,6 @@ public class AccountHolderDataModel {
         } catch (SQLException ex) {
             Logger.getLogger(AccountHolderDataModel.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return data;
     }
 

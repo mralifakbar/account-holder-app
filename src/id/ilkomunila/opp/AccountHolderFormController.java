@@ -112,7 +112,7 @@ public class AccountHolderFormController implements Initializable {
         ahdm.addAccount(Integer.parseInt(tfNewHolderID.getText()), acc);
         viewDataAccount(Integer.parseInt(tfNewHolderID.getText()));
         btnReload.fire();
-        tfAccBalance.setText("");
+        tfNewAccBalance.setText("");
     }
 
     @FXML
@@ -127,7 +127,6 @@ public class AccountHolderFormController implements Initializable {
                 cbGender.getSelectionModel().getSelectedItem(),
                 birthdate
         );
-
         try {
             ahdm.addAccountHolder(holder);
             lblSaveStatus.setText("Account berhasil dibuat");

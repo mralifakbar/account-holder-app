@@ -150,6 +150,9 @@
                                                             </TextField>
                                                             <Button fx:id="btnAddAccount" layoutX="114.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleAddAccountButton" prefHeight="38.0" prefWidth="268.0" text="Add Account" />
                                                          </children>
+                                                         <HBox.margin>
+                                                            <Insets right="10.0" />
+                                                         </HBox.margin>
                                                       </AnchorPane>
                                                    </children>
                                                 </HBox>
@@ -172,7 +175,7 @@
             </TabPane>
          </children>
       </AnchorPane>
-      <Label layoutX="1115.0" layoutY="6.0" text="DB Status:" />
-      <Label fx:id="lblDBStatus" layoutX="1189.0" layoutY="6.0" />
+      <Label layoutX="1127.0" layoutY="6.0" text="DB Status:" />
+      <Label fx:id="lblDBStatus" layoutX="1189.0" layoutY="6.0" prefHeight="17.0" prefWidth="70.0" />
    </children>
 </AnchorPane>
